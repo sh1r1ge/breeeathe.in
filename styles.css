@@ -1,0 +1,384 @@
+/* Base body styling */
+body {
+ margin: 0;
+ padding: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: white;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(14px, 1.04vw, 20px); /* Added clamp for font size safety */
+  background: radial-gradient(circle, rgb(6, 1, 114) 0%, black 40%);
+  background-size: 110%;
+  overflow: hidden; /* Prevent unnecessary scrollbars */
+}
+
+.container {
+    width: min(90vw, 1200px); /* Added max-width safety */
+    margin: 0 auto;
+    padding: clamp(15px, 1.3vw, 25px);
+}
+
+.chat-container {
+    height: 75vh; /* Changed from fixed height */
+    overflow-y: auto;
+    border: clamp(1px, 0.13vw, 3px) solid #333;
+    border-radius: clamp(8px, 0.65vw, 16px);
+    padding: clamp(15px, 1.3vw, 25px);
+    margin-bottom: clamp(15px, 1.3vw, 25px);
+}
+
+.message {
+    margin-bottom: clamp(15px, 1.3vw, 25px);
+    padding: clamp(8px, 0.65vw, 16px);
+    border-radius: clamp(8px, 0.65vw, 16px);
+}
+
+.input-container {
+    display: flex;
+    gap: clamp(8px, 0.65vw, 16px);
+}
+
+textarea {
+    padding: 0.65vw; /* Changed from 10px */
+    border-radius: 0.4vw; /* Changed from 6px */
+    font-size: clamp(14px, 1.04vw, 20px);
+}
+
+button {
+    padding: 0.65vw 1.3vw; /* Changed from 10px 20px */
+    border-radius: 0.4vw; /* Changed from 6px */
+    font-size: clamp(14px, 1.04vw, 20px);
+}
+
+/* Orb styling */
+.orb {
+  animation: bop 1.5s ease-in-out infinite; /* Restored the bopping animation */
+  width: clamp(180px, 15vw, 300px);
+  height: clamp(180px, 15vw, 300px);
+  border-radius: 50%;
+  z-index: 10;
+  position: relative; /* Ensure proper placement */
+  box-shadow: 
+  inset 0 0 2.7em #fff,
+  inset 1.25em 0 3.75em rgb(33, 50, 199),
+  inset -1.25em 0 3.75em blue,
+  inset 1.25em 0 18.75em rgb(22, 9, 190),
+  inset -1.25em 0 18.75em rgb(3, 3, 174),
+  0 0 2em #fffceb,
+  -0.625em 0 3.75em rgb(7, 3, 226),
+  0.625em 0 3.75em rgb(48, 48, 172);
+  transition: width 8s, height 8s;
+}
+
+.orb.color-dodge {
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes bop {
+  0%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(clamp(-10px, -1vw, -8px));
+  }
+}
+
+/* Side menu styling */
+.side-menu {
+  position: fixed;
+  right: -100%; /* Ensure the menu starts hidden */
+  top: 0;
+  width: clamp(280px, 25vw, 300px);
+  height: 100%;
+  background: linear-gradient(to right, transparent, black);
+  color: white;
+  overflow-x: hidden;
+  transition: 0.3s; /* Smooth slide-in effect */
+  z-index: 10;
+  font-family: "seria sans", sans-serif;
+  font-weight: 400;
+}
+
+.side-menu, .side-menu * {
+  font-family: "cofo-sans-variable", sans-serif; /* Or your preferred font */
+  font-size: clamp(15px, 1.1vw, 17px);
+  color: white; /* Uniform text color */
+  text-transform: none; /* Adjust if you want uppercase, lowercase, etc. */
+  letter-spacing: normal; /* Adjust for character spacing */
+  line-height: 1.5; /* Adjust for readability */
+  margin: 0;
+  padding: 0;
+}
+
+.side-menu h3 {
+  font-size: 1.5em;
+  color: white;
+  margin-top: clamp(15%, 18%, 20%); /* Reduced from 20-25% */
+  text-align: left;
+}
+
+.side-menu p {
+  margin-top: clamp(3px, 0.2vw, 4px);
+  margin-bottom: clamp(20px, 2vw, 25px); /* Reduced from 30-40px */
+  text-align: left;
+  margin-right: 15%;
+}
+
+/* Menu content styling */
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.6vw, 12px); /* Reduced gap */
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: clamp(15px, 1.5vw, 20px); /* Reduced margin */
+}
+.menu-content p {
+  font-size: 1.2em;
+  color: white;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: clamp(10px, 0.8vw, 12px); /* Reduced margin */
+  padding: 0;
+}
+
+.menu-content label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(2px, 0.2vw, 4px); /* Reduced gap */
+  font-size: 0.9rem;
+  width: 100%;
+  margin-bottom: clamp(10px, 1vw, 15px); /* Reduced margin */
+}
+
+.menu-content span {
+  margin-top: clamp(2px, 0.2vw, 4px); /* Reduced margin */
+}
+
+/* Slider styling */
+input[type="range"] {
+  appearance: none;
+  width: 80%;
+  height: 8px; /* Keep consistent slider thickness */
+  background: #ccc;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 15px; /* Thumb size remains proportional */
+  height: 15px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #aaa;
+}
+
+
+.mood-music-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 0.8vw, 12px); /* Reduced gap */
+  margin-top: clamp(8px, 0.6vw, 10px); /* Reduced margin */
+}
+
+#audio-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#audio-toggle img {
+  width: clamp(30px, 2.5vw, 35px);
+  height: clamp(30px, 2.5vw, 35px);
+}
+
+.mood-control input[type="color"],
+.music-control button img {
+  margin: 0; /* Reset any additional spacing */
+  
+}
+
+.fun-link {
+  position: absolute;
+  bottom: clamp(30px, 3vw, 40px); /* Maintain original position */
+  right: clamp(35px, 3.5vw, 45px);
+  text-align: right;
+}
+
+#fun-link {
+  font-size: 1rem; /* Maintain consistent font size */
+  color: white;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+#fun-link:hover {
+  color: #ccc; /* Lighten on hover for a subtle effect */
+}
+
+.mood-control input[type="color"]{
+  margin: 0; /* Reset any additional spacing */
+  margin-top: 20px;
+}
+
+
+#menu-toggle {
+  position: fixed !important;
+  right: 0.1vw !important;
+  top: 0.1vw !important;
+  left: auto !important; /* Ensure it's not being centered */
+  transform: none !important; /* Prevent any centering transforms */
+  margin-right: 0 !important; /* Remove any margin that might affect positioning */
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 3.5em;
+  cursor: pointer;
+  z-index: 11;
+}
+
+body, .side-menu, .side-menu * {
+  font-variation-settings: "wght" 300; /* Thin font globally */
+  font-weight: normal; /* Fallback for non-variable font browsers */
+}
+
+.menu-content p, 
+.simulation-control span, 
+#side-menu h3 {
+  font-variation-settings: "wght" 700; /* Bold for Duration, Mode, and H3 */
+  font-weight: bold; /* Fallback for non-variable font browsers */
+}
+
+
+/* Mobile / portrait adjustments */
+@media (max-width: 600px), (orientation: portrait) {
+
+    .orb {
+        width: clamp(140px, 45vw, 220px);
+        height: clamp(140px, 45vw, 220px);
+    }
+
+    #menu-toggle {
+        right: 4vw !important;
+        top: 3vw !important;
+        font-size: clamp(2em, 8vw, 3em);
+        padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .side-menu {
+        right: -110%;
+        width: 100%;
+        padding: 0 8vw;
+        box-sizing: border-box;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: linear-gradient(160deg, rgba(0,0,0,0.7) 0%, black 60%);
+        transition: right 0.3s ease;
+    }
+
+    .side-menu, .side-menu * {
+        font-size: clamp(15px, 4vw, 19px);
+    }
+
+    .side-menu h3 {
+        margin-top: 20vw;
+        margin-bottom: 4vw;
+        font-size: clamp(20px, 6vw, 28px);
+    }
+
+    .side-menu > p {
+        margin-top: 0;
+        margin-bottom: 8vw;
+        margin-right: 0;
+        line-height: 1.6;
+        opacity: 0.85;
+    }
+
+    .menu-content {
+        gap: 0;
+    }
+
+    .menu-content > p {
+        margin-bottom: 4vw;
+        font-size: clamp(15px, 4.5vw, 20px);
+    }
+
+    .menu-content label {
+        gap: 2vw;
+        margin-bottom: 6vw;
+        width: 100%;
+    }
+
+    .menu-content span {
+        margin-top: 1vw;
+        opacity: 0.85;
+    }
+
+    input[type="range"] {
+        width: 100%;
+        height: 6px;
+        margin-top: 2vw;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 22px;
+        height: 22px;
+    }
+
+    .mood-music-control {
+        flex-direction: row;
+        align-items: center;
+        gap: 8vw;
+        margin-top: 6vw;
+        padding-bottom: 12vw;
+        flex-wrap: wrap;
+    }
+
+    .mood-control input[type="color"] {
+        width: 40px;
+        height: 40px;
+        margin-top: 0;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+    }
+
+    #audio-toggle {
+        padding: 4px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #audio-toggle img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .fun-link {
+        position: static;
+        margin-top: 0;
+        align-self: center;
+    }
+
+    #fun-link {
+        font-size: clamp(14px, 4vw, 17px);
+    }
+}
